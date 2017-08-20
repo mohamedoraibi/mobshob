@@ -11,8 +11,11 @@
 @section('contentDashboard')
     <div class="container">
         <div class="row">
-            {{--Show Errors--}}
+
             <div class="paddingNavbar"></div>
+            {{--Show Errors--}}
+            {{--show errors if validation is not ok--}}
+
             @if($errors->count() >0)
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $error)
@@ -168,27 +171,27 @@
 @endsection
 
 @section('adminScript')
-    {{--<script>--}}
-    {{--var vm = new Vue({--}}
-    {{--el: "#root",--}}
-    {{--data: {--}}
-    {{--showModal: false--}}
-    {{--},--}}
-    {{--})--}}
-    {{--Vue.component('modal', {--}}
-    {{--template: '#modal-template',--}}
-    {{--props: ['show'],--}}
-    {{--methods: {--}}
-    {{--savePost: function () {--}}
-    {{--// Some save logic goes here...--}}
+    <script>
+    var vm = new Vue({
+    el: "#root",
+    data: {
+    showModal: false
+    },
+    })
+    Vue.component('modal', {
+    template: '#modal-template',
+    props: ['show'],
+    methods: {
+    savePost: function () {
+    // Some save logic goes here...
 
-    {{--this.$emit('close');--}}
-    {{--},--}}
-    {{--close: function () {--}}
-    {{--this.$emit('close');--}}
-    {{--}--}}
-    {{--}--}}
-    {{--});--}}
-    {{--</script>--}}
+    this.$emit('close');
+    },
+    close: function () {
+    this.$emit('close');
+    }
+    }
+    });
+    </script>
 
 @endsection

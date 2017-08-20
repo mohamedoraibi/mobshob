@@ -9,12 +9,14 @@ use Validator;
 class CategoriesController extends Controller
 {
 
+    // go to Categories page in dashboard
     public function getCategories()
     {
         $Categories = Categories::all();
         return view('mobAdmin.categories.showCategories', compact('Categories'));
     }
 
+// make insert new Categories in dashboard & make validation
     public function insertCategories(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -31,6 +33,7 @@ class CategoriesController extends Controller
         }
     }
 
+// edit Categories in dashboard
     public function updateCategories(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -45,13 +48,13 @@ class CategoriesController extends Controller
             return redirect('/dashboard/categories');
         }
     }
-
+// edit Categories in dashboard
     public function updateCategoriesPage($id)
     {
         $Categories = Categories::find($id);
         return view('mobAdmin.categories.updateCategories', compact('Categories'));
     }
-
+// delete Categories in dashboard
     public function deleteCategories($id)
     {
         $Categories = Categories::find($id);
@@ -59,6 +62,7 @@ class CategoriesController extends Controller
         return redirect()->back();
     }
 
+// search Categories in dashboard
     public function index(Request $request)
     {
         $search = $request->search;

@@ -16,6 +16,16 @@
 //});
 
 //---------- Main Page Routes---------//
+
+// Sort A-Z Mobiles Page
+Route::get('/filter/AtoZ', 'UserController@getAtoZ');
+// Sort Z-A Mobiles Page
+Route::get('/filter/ZtoA', 'UserController@getZtoA');
+// Sort Big Price first
+Route::get('/filter/bigPrice', 'UserController@getbigPrice');
+// Sort Low Price first
+Route::get('/filter/lowPrice', 'UserController@getlowPrice');
+
 // Samsung Mobiles Page
 Route::get('/samsung', 'UserController@getSamsung');
 
@@ -25,6 +35,24 @@ Route::get('/iphone', 'UserController@getIphone');
 // Item Description Mobiles Page
 Route::get('/description/{id}', 'UserController@getItemDescription');
 
+// About us Page
+Route::get('/aboutus', 'UserController@getAboutUs');
+
+// Search main
+Route::get('search/', 'UserController@searchMain');
+Route::get('search/samsung/', 'UserController@searchSamsung');
+Route::get('search/iphone/', 'UserController@searchIphone');
+
+//---------- Auth  Routes---------//
+Route::group(['middleware' => 'guest', 'prefix' => '/auth'], function () {
+    Route::get('register', 'UserController@getRegister');
+    Route::post('register', 'UserController@AttemptRegister')->name('auth.register');;
+    Route::get('login', 'UserController@getLogin');
+    Route::post('login', 'UserController@AttemptLogin')->name('auth.login');
+});
+Route::group(['middleware' => 'auth.user'], function () {
+    Route::get('auth/logout', 'UserController@logout');
+});
 
 //---------- Dashboard Page Routes---------//
 

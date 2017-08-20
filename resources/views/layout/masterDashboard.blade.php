@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-
+    {{-- get title from page the call this master page--}}
     <title>@yield('titleDashboard')</title>
     <style>
 
@@ -60,11 +60,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav ">
-                <li class="@yield('home')"><a href="/">Home</a></li>
-                <li class="@yield('PatientsManagment')"><a href="/patientManagment">Iphone</a></li>
-                <li class="@yield('PatientsManagment')"><a href="/patientManagment">Samsung</a></li>
-                <li class="@yield('PatientsManagment')"><a href="/patientManagment">Sony</a></li>
-                <li class="@yield('PatientsManagment')"><a href="/patientManagment">Huawei</a></li>
+                <li class="@yield('home')"><a href="/">View Website</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="@yield('PatientsManagment')"><a href="/patientManagment">About Us</a></li>

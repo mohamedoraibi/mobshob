@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+    {{-- get title from page the call this master page--}}
     <title>@yield('title')</title>
     <style>
         li {
@@ -18,6 +19,13 @@
             background-color: grey;
             padding-top: 8px;
             height: 35px;
+        }
+        .paddingNavbar {
+            padding-bottom: 70px
+        }
+
+        .paddingFotter {
+            padding-top: 60px
         }
     </style>
 </head>
@@ -49,24 +57,34 @@
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="@yield('PatientsManagment')"><a href="/patientManagment">About Us</a></li>
-                <li class="@yield('PatientsManagment')"><a href="/patientManagment">Help</a></li>
-                <li class="dropdown @yield('signup') @yield('signin')">
+                <li class="@yield('PatientsManagment')">
+                    @if(Auth::user())
+                        <a class=" alert-info">
+                            {{Auth::user()->name}}
+                        </a>
+                    @endif
+                </li>
+                <li class="@yield('aboutUs')"><a href="/aboutus">About Us</a></li>
+                <li class="dropdown @yield('signup') @yield('tManin')">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Account <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li class="@yield('signup')"><a href="/auth/register">Signup</a></li>
-                        <li class="@yield('signin')"><a href="/auth/login">Sign in</a></li>
-                        <li><a href="#">Sign out</a></li>
+                        @if(Auth::user())
+                            <li><a href="/auth/logout">Sign out</a></li>
+                        @endif
+                        @if(!Auth::user())
+                            <li class="@yield('signup')"><a href="/auth/register">Signup</a></li>
+                            <li class="@yield('signin')"><a href="/auth/login">Sign in</a></li>
+                        @endif
                     </ul>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-<div style="padding-bottom: 60px"></div>
+<div class="paddingNavbar"></div>
 @yield('content')
-<div style="padding-top: 60px"></div>
+<div class="paddingFotter"></div>
 <footer class="container-fluid text-center navbar-fixed-bottom" style="font-size: 20px;padding-bottom: 40px">
     Mohamed Al-Oraibi &copy; {{date("Y")}}
 </footer>

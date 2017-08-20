@@ -9,17 +9,20 @@ use Validator;
 
 class AdminController extends Controller
 {
+    // go to dashboard
     public function getDashboard()
     {
         return view('mobAdmin.dashboard');
     }
 
+// go to Admins
     public function getAdmins()
     {
         $Admin = Admin::all();
         return view('mobAdmin.admins', compact('Admin'));
     }
 
+// delete Admin
     public function deleteAdmin($id)
     {
         $Admin = Admin::find($id);
@@ -27,6 +30,7 @@ class AdminController extends Controller
         return redirect('/dashboard/admins');
     }
 
+// insert new Admin
     public function insertAdmin(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -48,6 +52,7 @@ class AdminController extends Controller
         }
     }
 
+// edit Admin information in dashboard
     public function updateAdmin(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -64,7 +69,7 @@ class AdminController extends Controller
             return redirect('/dashboard/admins');
         }
     }
-
+// go to edit page in dashboard
     public function updateAdminPage($id)
     {
         $Admin = Admin::find($id);
@@ -75,13 +80,13 @@ class AdminController extends Controller
     {
         return view('mobAdmin.updateAdmin');
     }
-
+// go to reset admin password page in dashboard
     public function resetPasswordAdminPage($id)
     {
         $Admin = Admin::find($id);
         return view('mobAdmin.resetPassword', compact('Admin'));
     }
-
+// reset admin password
     public function resetPasswordAdmin(Request $request)
     {
         $Admin = Admin::find($request->admin_id_edit);
@@ -89,7 +94,7 @@ class AdminController extends Controller
         $Admin->save();
         return redirect('/dashboard/admins');
     }
-
+// search admin in dashboard
     public function index(Request $request)
     {
         $search = $request->search;

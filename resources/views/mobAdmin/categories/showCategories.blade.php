@@ -11,8 +11,10 @@
 @section('contentDashboard')
     <div class="container">
         <div class="row">
-            {{--Show Errors--}}
+
             <div class="paddingNavbar"></div>
+            {{--Show Errors--}}
+            {{--show errors if validation is not ok--}}
             @if($errors->count() >0)
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $error)

@@ -13,7 +13,9 @@
         <div class="row">
             {{--Show Errors--}}
             <div class="paddingNavbar"></div>
-            @if($errors->count() >0)
+            {{--show errors if validation is not ok--}}
+
+        @if($errors->count() >0)
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $error)
                         <li>{{$error}}</li>
@@ -59,20 +61,29 @@
                                                            id="item_number"
                                                            placeholder="enter Item Number"></td>
 
-                            <td class="text-center"><input name="item_company" type="text" class="form-control"
-                                                           id="item_company"
-                                                           placeholder="enter Item Company"></td>
+                            <td class="text-center">
+
+                                <select name="item_company" id="item_company" class="form-control">
+                                    @foreach($Categories as $categories)
+                                        <option value="{{$categories->categories_name}}">{{$categories->categories_name}}</option>
+                                    @endforeach
+                                </select>
+                            </td>
 
 
                         </tr>
                         </tbody>
                         <thead>
+                        <th class="text-center">Item Price</th>
                         <th class="text-center">Item Summary</th>
                         <th class="text-center">Item Description</th>
                         <th class="text-center">Item Image Link</th>
                         </thead>
                         <tbody>
                         <tr>
+                            <td class="text-center"><input name="item_price" type="text" class="form-control"
+                                                           id="item_price"
+                                                           placeholder="enter Item Price"></td>
                             <td class="text-center"><input name="item_summary" type="text" class="form-control"
                                                            id="item_summary"
                                                            placeholder="enter Item Summary"></td>
@@ -104,6 +115,7 @@
                         <th class="text-center">id</th>
                         <th class="text-center">Item Name</th>
                         <th class="text-center">Item ID</th>
+                        <th class="text-center">Item Price</th>
                         <th class="text-center">Item Number</th>
                         <th class="text-center">Item Company</th>
                         <th class="text-center">Item Summary</th>
@@ -119,6 +131,7 @@
                                 <td class="text-center">{{$searchResult->id}}</td>
                                 <td class="text-center">{{$searchResult->item_name}}</td>
                                 <td class="text-center">{{$searchResult->item_id}}</td>
+                                <td class="text-center">{{$searchResult->item_price}}</td>
                                 <td class="text-center">{{$searchResult->item_number}}</td>
                                 <td class="text-center">{{$searchResult->item_company}}</td>
                                 <td class="text-center">{{$searchResult->item_summary}}</td>
@@ -130,7 +143,8 @@
                                     {{--<a id="show-modal" @click="showModal = true"--}}
                                     {{--href="/dashboard/admins/update/{{$admin->id}}">Edit</a>--}}
                                 </td>
-                                <td class="text-center"><a href="/dashboard/items/delete/{{$searchResult->id}}">Delete</a>
+                                <td class="text-center"><a
+                                            href="/dashboard/items/delete/{{$searchResult->id}}">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -147,6 +161,7 @@
                     <th class="text-center">id</th>
                     <th class="text-center">Item Name</th>
                     <th class="text-center">Item ID</th>
+                    <th class="text-center">Item Price</th>
                     <th class="text-center">Item Number</th>
                     <th class="text-center">Item Company</th>
                     <th class="text-center">Item Summary</th>
@@ -162,6 +177,7 @@
                             <td class="text-center">{{$item->id}}</td>
                             <td class="text-center">{{$item->item_name}}</td>
                             <td class="text-center">{{$item->item_id}}</td>
+                            <td class="text-center">{{$item->item_price}}</td>
                             <td class="text-center">{{$item->item_number}}</td>
                             <td class="text-center">{{$item->item_company}}</td>
                             <td class="text-center">{{$item->item_summary}}</td>

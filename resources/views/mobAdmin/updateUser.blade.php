@@ -12,7 +12,9 @@
     <div class="container">
         <div class="row">
             <div class="paddingNavbar"></div>
-            @if($errors->count() >0)
+            {{--show errors if validation is not ok--}}
+
+        @if($errors->count() >0)
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $error)
                         <li>{{$error}}</li>

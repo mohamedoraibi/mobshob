@@ -17,6 +17,7 @@
                          alt="...">
                     <div class="caption">
                         <h3>{{$Item->item_name}}</h3>
+                        <p>${{$Item->item_price}}</p>
                         <p>{{$Item->item_summary}}</p>
                         <p>
                             <a href="#" class="btn btn-danger " role="button">Add to Cart</a>

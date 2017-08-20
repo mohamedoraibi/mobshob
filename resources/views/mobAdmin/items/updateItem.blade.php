@@ -12,7 +12,9 @@
     <div class="container">
         <div class="row">
             <div class="paddingNavbar"></div>
-            @if($errors->count() >0)
+            {{--show errors if validation is not ok--}}
+
+        @if($errors->count() >0)
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $error)
                         <li>{{$error}}</li>
@@ -58,12 +60,17 @@
                     </tr>
                     </tbody>
                     <thead>
+                    <th class="text-center">Item Price</th>
                     <th class="text-center">Item Summary</th>
                     <th class="text-center">Item Description</th>
                     <th class="text-center">Item Image Link</th>
                     </thead>
                     <tbody>
                     <tr>
+                        <td class="text-center"><input name="item_price" type="text" class="form-control"
+                                                       id="item_price"
+                                                       value="{{$Item->item_price}}"
+                                                       placeholder="enter Item Price"></td>
                         <td class="text-center"><input name="item_summary" type="text" class="form-control"
                                                        id="item_summary"
                                                        value="{{$Item->item_summary}}"
