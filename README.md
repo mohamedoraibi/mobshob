@@ -16,6 +16,7 @@
 * Registration (SignUp | SignIn | SignOut)
 * Validation For all input
 * Authentication for pages
+* Vue.js
 
 ### Tables
 * Users
