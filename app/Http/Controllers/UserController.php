@@ -165,7 +165,7 @@ class UserController extends Controller
             'user_password' => 'required|min:6 ',
             'user_password_repeat' => 'required|same:user_password',
         ]);
-        
+
         if ($validator->fails())
             return redirect()->back()->WithErrors($validator->errors()->all())->withInput();
         else {
