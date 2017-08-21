@@ -15,8 +15,10 @@ class CheckUser
      */
     public function handle($request, Closure $next)
     {
+
         // check if user login or not .. if not will return it to login page
         if (!Auth::check()) {
+            // return if not to login
             return redirect('/auth/login');
         }
         return $next($request);

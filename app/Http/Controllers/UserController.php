@@ -84,12 +84,14 @@ class UserController extends Controller
             }
         }
     }
+
 // go to logut page
     public function logout()
     {
         Auth::logout();
         return redirect('/');
     }
+
 // go to register page
     public function getRegister()
     {
@@ -131,18 +133,21 @@ class UserController extends Controller
         $Item = Item::where('item_company', 'like', 'samsung')->orderBy('id', 'desc')->paginate(9);
         return view('categories.samsung', compact('Item'));
     }
+
 // go to iphone items page
     public function getIphone()
     {
         $Item = Item::where('item_company', 'like', 'iphone')->orderBy('id', 'desc')->paginate(9);
         return view('categories.iphone', compact('Item'));
     }
+
 // go to description item page with find function to find the specific item that user select it
     public function getItemDescription($id)
     {
         $Item = Item::find($id);
         return view('categories.itemDescription', compact('Item'));
     }
+
 // go to user page in dashboard
     public function getUsers()
     {
@@ -160,6 +165,7 @@ class UserController extends Controller
             'user_password' => 'required|min:6 ',
             'user_password_repeat' => 'required|same:user_password',
         ]);
+        
         if ($validator->fails())
             return redirect()->back()->WithErrors($validator->errors()->all())->withInput();
         else {
@@ -173,6 +179,7 @@ class UserController extends Controller
             return redirect('/dashboard/users');
         }
     }
+
 // make search to item in main page
     public function searchMain(Request $request)
     {
@@ -182,6 +189,7 @@ class UserController extends Controller
         $Item = Item::orderBy('id', 'desc')->paginate(9);
         return view('welcome', compact('searchResults', 'Item'));
     }
+
 // make search for item in samsung page & just search in samsung's items
     public function searchSamsung(Request $request)
     {
@@ -191,6 +199,7 @@ class UserController extends Controller
         $Item = Item::where('item_company', 'like', 'samsung')->orderBy('id', 'desc')->paginate(9);
         return view('categories.samsung', compact('searchResults', 'Item'));
     }
+
 // make search for item in iphone page & just search in iphone's items
     public function searchIphone(Request $request)
     {
@@ -200,6 +209,7 @@ class UserController extends Controller
         $Item = Item::where('item_company', 'like', 'iphone')->orderBy('id', 'desc')->paginate(9);
         return view('categories.iphone', compact('searchResults', 'Item'));
     }
+
 // search in user in dashboard page
     public function index(Request $request)
     {
@@ -209,6 +219,7 @@ class UserController extends Controller
         $User = User::all();
         return view('mobAdmin.users', compact('searchResults', 'User'));
     }
+
 // delete user from dashboard page
     public function deleteUser($id)
     {
@@ -236,6 +247,7 @@ class UserController extends Controller
             return redirect('/dashboard/users');
         }
     }
+
 // go to edit user information page
     public function updateUserPage($id)
     {
