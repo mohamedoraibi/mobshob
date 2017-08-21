@@ -10,6 +10,13 @@
 * Website
 * Dashboard
 
+### Features
+
+* Filters for Item (A-Z | Z-A | Big price first | low price first)
+* Registration (SignUp | SignIn | SignOut)
+* Validation For all input
+* Authentication for pages
+
 ### Tables
 * Users
 * Admins	
@@ -17,6 +24,7 @@
 * Oredrs	
 * item_user	
 * Categories
+
 
 
   
