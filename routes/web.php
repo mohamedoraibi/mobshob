@@ -107,6 +107,7 @@ Route::get('/dashboard/items/update/{id}', 'ItemController@updateItemPage');
 // Item Search
 Route::get('/dashboard/items/search/', 'ItemController@index');
 
+
 //----------Categories Page in Dashboard---------//
 Route::get('/dashboard/categories', 'CategoriesController@getCategories');
 

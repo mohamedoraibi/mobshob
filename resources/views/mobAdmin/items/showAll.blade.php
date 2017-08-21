@@ -9,13 +9,14 @@
 @endsection
 
 @section('contentDashboard')
+
     <div class="container">
         <div class="row">
             {{--Show Errors--}}
             <div class="paddingNavbar"></div>
             {{--show errors if validation is not ok--}}
 
-        @if($errors->count() >0)
+            @if($errors->count() >0)
                 <div class="alert alert-danger">
                     @foreach($errors->all() as $error)
                         <li>{{$error}}</li>

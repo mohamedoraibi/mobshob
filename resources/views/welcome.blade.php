@@ -96,6 +96,7 @@
                         </div>
                     </div>
                 @endforeach
+
                 {{--Paginate--}}
                 <div class="col-md-12 text-center">
                     <?php echo $Item->render(); ?>
