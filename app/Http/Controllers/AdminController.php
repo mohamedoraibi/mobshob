@@ -57,7 +57,7 @@ class AdminController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'admin_fullname' => 'required ',
-            'admin_username' => 'required|unique:admins',
+            'admin_username' => 'required',
         ]);
         if ($validator->fails())
             return redirect()->back()->WithErrors($validator->errors()->all())->withInput();
